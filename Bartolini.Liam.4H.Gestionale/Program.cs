@@ -60,7 +60,8 @@ namespace Bartolini.Liam._4H.Gestionale
                         Console.ResetColor();
                     }
                 }
-                else
+               
+                if(ricercaStream == "2")
                 {
                     int oreStraodinario = 0;
                     bool flag = false;
@@ -142,7 +143,8 @@ namespace Bartolini.Liam._4H.Gestionale
                         Console.ResetColor();
                     }
                 }
-                else
+                
+                if(ricerca == "2")
                 {
                     int oreStraodinario = 0;
                     bool flag = false;
