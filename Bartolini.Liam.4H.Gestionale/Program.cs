@@ -24,9 +24,18 @@ namespace Bartolini.Liam._4H.Gestionale
                 string[] ore_Stream = riga.Split(',');
 
                 fin.Close();
+                string ricercaStream;
 
-                Console.WriteLine("Scegli quale modalità di ricerca usare: \r\n1. Per cognome\r\n2. Per reparto");
-                string ricercaStream = Console.ReadLine();
+                while (true)
+                {
+                    Console.WriteLine("Scegli quale modalità di ricerca usare: \r\n1. Per cognome\r\n2. Per reparto");
+                    ricercaStream = Console.ReadLine();
+
+                    if (ricercaStream == "1" || ricercaStream == "2")
+                        break;
+                }
+                
+                
 
                 if (ricercaStream == "1")
                 {
@@ -53,9 +62,16 @@ namespace Bartolini.Liam._4H.Gestionale
                 string[] reparto = new string[] { "amm", "amm", "magaz", "amm", "sped" };
                 int[] ore = new int[] { 2, 6, 3, 7, 9 };
                 string[] ore_Int = new string[ore.Length];
+                
+                string ricerca; 
+                while (true)
+                {
+                    Console.WriteLine("Scegli quale modalità di ricerca usare: \r\n1. Per cognome\r\n2. Per reparto");
+                    ricerca = Console.ReadLine();
 
-                Console.WriteLine("Scegli quale modalità di ricerca usare: \r\n1. Per cognome\r\n2. Per reparto");
-                string ricerca = Console.ReadLine();
+                    if (ricerca == "1" || ricerca == "2")
+                        break;
+                }
 
                 if (ricerca == "1")
                 {
@@ -72,7 +88,7 @@ namespace Bartolini.Liam._4H.Gestionale
             }
         }
 
-        private static void RamoFalse(string[] reparto, int[] ore)
+        static void RamoFalse(string[] reparto, int[] ore)
         {
             int oreStraodinario = 0;
             bool flag = false;
