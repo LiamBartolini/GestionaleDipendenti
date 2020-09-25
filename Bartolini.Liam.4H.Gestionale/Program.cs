@@ -1,13 +1,45 @@
 ﻿using System;
 using System.IO;
+using System.Reflection;
+using System.Reflection.Metadata;
 
 namespace Bartolini.Liam._4H.Gestionale
-{
+{ 
+    class Dipendente
+    {
+        public string cognome;
+        public string reparto;
+        public int ore;
+
+        public Dipendente()
+        {
+
+        }
+
+        public Dipendente(string c, string r, int o)
+        {
+            cognome = c;
+            reparto = r;
+            ore = o;
+        }
+
+        public int ExtraordinaryHours(int[] ore, string[] reparti, string reparto)
+        {
+            int oreStrordinarie = 0;
+
+            for(int i = 0; i < ore.Length; i++)
+                if (reparti[i] == reparto)
+                    oreStrordinarie += ore[i];
+
+            return oreStrordinarie;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            string path = @"C:/Users/Desktop/Desktop/Bartolini.Liam.4H.Gestionale/Bartolini.Liam.4H.Gestionale/dati.txt";
+            string path = @"C:/Users/Desktop/Desktop/Bartolini.Liam.4H.Gestionale/Bartolini.Liam.4H.Gestionale/dat.txt";
             if (File.Exists(path))
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -62,7 +94,9 @@ namespace Bartolini.Liam._4H.Gestionale
                 string[] reparto = new string[] { "amm", "amm", "magaz", "amm", "sped" };
                 int[] ore = new int[] { 2, 6, 3, 7, 9 };
                 string[] ore_Int = new string[ore.Length];
+
                 
+
                 string ricerca; 
                 while (true)
                 {
@@ -90,6 +124,7 @@ namespace Bartolini.Liam._4H.Gestionale
 
         static void RamoFalse(string[] reparto, int[] ore)
         {
+            Dipendente dip = new Dipendente();
             int oreStraodinario = 0;
             bool flag = false;
 
@@ -123,6 +158,12 @@ namespace Bartolini.Liam._4H.Gestionale
                 Console.WriteLine($"I dipendenti del reparto '{reparto_Ricerca}' hanno fatto {oreStraodinario} ore di straodinario complessive");
                 Console.ResetColor();
             }
+
+            int oreExtra = 0;
+            //chiamo il metodo per calcolare le ore di straordinario dalla Classe
+            oreExtra = dip.ExtraordinaryHours(ore, reparto, reparto_Ricerca);
+            Console.WriteLine($"ORE DI STRAORDINARIO CLASSE: {oreExtra}");
+            //_____________________________
         }
 
         static void RamoTrue(string[] cognomi_Stream, string[] ore_Stream)
